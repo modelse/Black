@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'log/css/wish.css' %}"media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <a href="{% url 'loginApp:logout' %}">Logout</a>
+        <a href="{% url 'blackApp:home' %}">Home</a>
+        <h1>Create a New Wish List Item</h1>
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form class="" action="{% url 'blackApp:addItem'%}" method="post">
+            {% csrf_token%}
+            Item/Product: <input type="text" name="addItem">
+            <input type="submit" name="addButt" value="Add">
+
+        </form>
+    </body>
+</html>

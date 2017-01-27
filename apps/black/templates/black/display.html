@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'black/css/show.css' %}"media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8">
+        <title>Display Items</title>
+    </head>
+    <body>
+        <a href="{% url 'loginApp:logout' %}">Logout</a>
+        <a href="{% url 'blackApp:home' %}">Home</a>
+        {% for Items in Items %}
+        <h1>{{Items.item_name}}</h1>
+        {% endfor %}
+        <h2>Other users that also bought this item:</h2>
+
+        <p>Nobody you weirdo! What is wrong with you?! I am reporting this.</p>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'log/css/login.css' %}"media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8">
+        <title>login</title>
+    </head>
+    <body>
+        <div id='wrapper'>
+            <h1>Welcome to EveBook</h1>
+            <div id='main'>
+                <div id='login'>
+                    <h2>Login:</h2>
+                    <form action="{% url 'loginApp:my_login' %}" method="post">
+                        {% csrf_token%}
+                        <div>Username:<input class='email' type="text" name="username2" ></div>
+                        <div>Password:<input class='pass' type="password" name="password2" ></div>
+                        <input type="submit" name="submit" value="Login">
+                    </form>
+                </div>
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <div id='registration'>
+                    <h2>New Users Register Here!</h2>
+                    <form action="{% url 'loginApp:my_reg' %}" method="post">
+                        {% csrf_token%}
+                        <div >Name:<input id='name' type="text" name="name" ></div>
+                        <div >Email:<input class='email' type="email" name="email" ></div>
+                        <div >Username:<input id="username"  type="text" name="username" ></div>
+                        <div >Password:<input class='pass' type="password" name="password" ></div>
+                        <div >Confirm Password:<input id='con' type="text" name="confirm"></div>
+                        <div> Date Hired:<input type="text" name="hired_date"></div>
+                        <input type="submit" name="registerbutt" value="Register">
+                    </form>
+                </div>
+                <form class="" action="{% url 'loginApp:my_clear' %}" method="post">
+                    {% csrf_token%}
+                    <input type="submit" name="clearshit" value="Clear Session">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

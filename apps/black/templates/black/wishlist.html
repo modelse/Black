@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'log/css/wish.css' %}"media="screen" title="no title"  charset="utf-8">
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <a href="{% url 'loginApp:logout' %}">Logout</a>
+        <h1>{{request.session.user_username}}</h1>
+        <h2>Your Wish List:</h2>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Added by</th>
+                <th></th>
+                <th>Date Added</th>
+                <th>Action</th>
+            </tr>
+            {% for Items in Items %}
+            <tr><td><a href="black/display/{{Items.id}}">{{Items.item_name}}</a></td>
+                    {% for User in Users %}
+                    <td>{{User.username}}</td>
+                    {% endfor %}
+                <td>{{Items.created_at}}</td>
+                <td><a href="black/delete/{{Items.id}}">Delete</a><a href="{% url 'blackApp:remove' %}">Remove</a>
+                <td></td>
+            </tr>
+
+            {% endfor %}
+        </table>
+        <h2>Other User's Wish List</h2>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Added by</th>
+                <th>Date Added</th>
+                <th>Action</th>
+            </tr>
+
+        </table>
+        <a href="{% url 'blackApp:add'%}">Add Item</a>
+
+        <h2>Yeah.... that didn't go well.</h2>
+        <p>I ran into a lot of issues and then with about an hour left I realized I never accounted for the
+            fact that each user needs to have a wishlist. and at this point it is too late to implement/figure out.
+            Wah wah! I think we really didn't get enough practice with building our own connected tables in
+            Django. Jack mentioned an assignment. 'The Secret Assignment' and he said it helps a lot. So i would
+            really like to get my hands on that if possible.
+
+            I got some stuff implemented. Able to create items. You can move around within the project easily.
+            not implementing a wishlist really screwed me. though quite honstly im not sure how I would do that.
+            Also i clearly need to work on my making queries to pull just the info i Want.
+
+            SIGH....</p>
+    </body>
+</html>
